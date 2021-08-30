@@ -71,5 +71,9 @@
   "engines": {
     "node": ">=14.0.0"
   },
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true
+  },
   "repository": "https://github.com/wesbos/advanced-react"
 }

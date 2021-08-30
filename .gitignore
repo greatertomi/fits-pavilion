@@ -1,3 +1,5 @@
 node_modules
 .idea
 .vscode
+.next
+node_modules
