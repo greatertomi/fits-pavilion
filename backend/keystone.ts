@@ -8,6 +8,7 @@ import {
 
 import { User } from './schemas/User';
 import { Product } from './schemas/Product';
+import { ProductImage } from './schemas/ProductImage';
 
 const databaseURL = process.env.DATABASE_URL;
 
@@ -40,6 +41,7 @@ export default withAuth(
     lists: createSchema({
       User,
       Product,
+      ProductImage,
     }),
     ui: {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
