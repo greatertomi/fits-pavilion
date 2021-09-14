@@ -1,3 +1,9 @@
-export default function IndexPage() {
-  return <p>SellPage</p>;
+import CreateProduct from '../components/CreateProduct';
+
+export default function SellPage() {
+  return (
+    <div>
+      <CreateProduct />
+    </div>
+  );
 }
