@@ -1,7 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const useForm = (initial = {}) => {
   const [inputs, setInputs] = useState(initial);
+  console.log('initial ->', initial);
+  const initialValues = Object.values(initial).join('');
+
+  useEffect(() => {
+    setInputs(initial);
+  }, [initialValues]);
 
   const handleChange = (e) => {
     // eslint-disable-next-line prefer-const

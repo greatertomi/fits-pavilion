@@ -11,10 +11,22 @@ const Product = ({ product }) => {
     <ItemStyles>
       <img src={photo?.image?.publicUrlTransformed} alt={name} />
       <Title>
-        <Link href={`/products/${id}`}>{name}</Link>
+        <Link href={`/product/${id}`}>{name}</Link>
       </Title>
       <PriceTag>{formatMoney(price)}</PriceTag>
       <p>{description}</p>
+      <div className="buttonList">
+        <Link
+          href={{
+            pathname: 'update',
+            query: {
+              id: product.id
+            }
+          }}
+        >
+          Edit
+        </Link>
+      </div>
     </ItemStyles>
   );
 };
