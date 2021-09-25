@@ -31,6 +31,8 @@
         "no-alert": "off",
         "no-underscore-dangle": "off",
         "no-plusplus": "off",
+        "import/prefer-default-export": "off",
+        "operator-linebreak": "off",
         "react/jsx-one-expression-per-line": "off",
         "react/jsx-closing-bracket-location": "off"
     }
