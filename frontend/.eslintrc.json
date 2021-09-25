@@ -30,6 +30,7 @@
         "no-restricted-globals": "off",
         "no-alert": "off",
         "no-underscore-dangle": "off",
+        "no-plusplus": "off",
         "react/jsx-one-expression-per-line": "off",
         "react/jsx-closing-bracket-location": "off"
     }
