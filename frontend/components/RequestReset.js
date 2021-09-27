@@ -5,34 +5,26 @@ import Form from './styles/Form';
 import useForm from '../lib/useForm';
 import Error from './ErrorMessage';
 
-const SIGNUP_MUTATION = gql`
-  mutation SIGNUP_MUTATION(
-    $email: String!
-    $name: String!
-    $password: String!
-  ) {
-    createUser(data: { email: $email, name: $name, password: $password }) {
-      id
-      email
-      name
+const REQUEST_RESET_MUTATION = gql`
+  mutation SIGNUP_MUTATION($email: String!) {
+    sendUserPasswordResetLink(email: $email) {
+      code
+      message
     }
   }
 `;
 
-const SignUp = () => {
+const RequestReset = () => {
   const { inputs, handleChange, resetForm } = useForm({
-    email: '',
-    password: '',
-    name: ''
+    email: ''
   });
-  const [signUp, { data, error }] = useMutation(SIGNUP_MUTATION, {
+  const [signIn, { data, error }] = useMutation(REQUEST_RESET_MUTATION, {
     variables: inputs
-    // refetchQueries: [{ query: CURRENT_USER_QUERY }]
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await signUp().catch(console.error);
+    const res = await signIn().catch(console.error);
     console.log('login', res);
     resetForm();
   };
@@ -40,26 +32,12 @@ const SignUp = () => {
   return (
     <div>
       <Form method="POST" onSubmit={handleSubmit}>
-        <h2>Sign up for an Account</h2>
+        <h2>Request a password reset</h2>
         <Error error={error} />
         <fieldset>
-          {data?.createUser && (
-            <p>
-              Signed up with {data.createUser.email} - Please Go Head and Sign
-              In!
-            </p>
+          {data?.sendUserPasswordResetLink === null && (
+            <p>Success! Check your email for a link!</p>
           )}
-          <label htmlFor="name">
-            Name
-            <input
-              type="name"
-              name="name"
-              placeholder="Your Name"
-              autoComplete="name"
-              value={inputs.name}
-              onChange={handleChange}
-            />
-          </label>
           <label htmlFor="email">
             Email
             <input
@@ -82,11 +60,11 @@ const SignUp = () => {
               onChange={handleChange}
             />
           </label>
-          <button type="submit">Sign In</button>
+          <button type="submit">Request Reset</button>
         </fieldset>
       </Form>
     </div>
   );
 };
 
-export default SignUp;
+export default RequestReset;
