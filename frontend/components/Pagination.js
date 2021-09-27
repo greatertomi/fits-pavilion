@@ -32,7 +32,7 @@ const Pagination = ({ page }) => {
         <span aria-disabled={page <= 1}>Prev</span>
       </Link>
       <p>
-        Page {page} of ${pageCount}
+        Page {page} of {pageCount}
       </p>
       <p>{count} Items Total</p>
       <Link href={`/products/${page + 1}`}>
