@@ -24,7 +24,9 @@ const Pagination = ({ page }) => {
   return (
     <PaginationStyles>
       <Head>
-        <title>Fits - Page ${page} of ___</title>
+        <title>
+          Fits - Page {page} of {pageCount}
+        </title>
       </Head>
       <Link href={`/products/${page - 1}`}>
         <span aria-disabled={page <= 1}>Prev</span>
