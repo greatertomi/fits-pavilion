@@ -7,6 +7,8 @@ import formatMoney from '../lib/formatMoney';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import { useCart } from '../context/CartState';
 import CloseButton from './styles/CloseButton';
+import RemoveFromCart from './RemoveFromCart';
+import Checkout from './Checkout';
 
 const CartItemStyles = styled.li`
   padding: 1rem 0;
@@ -41,6 +43,7 @@ const CartItem = ({ cartItem }) => {
           </em>
         </p>
       </div>
+      <RemoveFromCart id={cartItem.id} />
     </CartItemStyles>
   );
 };
@@ -61,6 +64,7 @@ const Cart = () => {
         ))}
         <footer>
           <p>{formatMoney(calcTotalPrice(me.cart))}</p>
+          <Checkout />
         </footer>
       </ul>
     </CartStyles>
